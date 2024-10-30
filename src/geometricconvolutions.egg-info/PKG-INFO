@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: geometricconvolutions
-Version: 0.1.1
+Version: 0.1.2
 Summary: Package for building Convolutional Neural Networks on images of tensors.
 Home-page: https://github.com/WilsonGregory/GeometricConvolutions
 Author: Wilson Gregory, David Hogg
@@ -17,6 +17,7 @@ Requires-Dist: numpy
 Requires-Dist: jax
 Requires-Dist: cmastro
 Requires-Dist: optax
+Requires-Dist: equinox
 Requires-Dist: imageio
 
 # Geometric Convolutions
@@ -39,7 +40,8 @@ See the paper for more details: https://arxiv.org/abs/2305.12585
 
 ## Installation
 
-- Install this repo as an editable install using pip.
+- Install using pip: `pip install geometricconvolutions`.
+- Alternatively, you can install this repo as an editable install using pip.
   - Clone the repository `git clone https://github.com/WilsonGregory/GeometricConvolutions.git`
   - Navigate to the GeometricConvolutions directory `cd GeometricConvolutions`
   - Locally install the package `pip install -e .` (may have to use pip3 if your system has both python2 and python3 installed)
@@ -73,7 +75,7 @@ image = geom.GeometricImage(data, parity=0, D=2)
 
 We can visualize this image with the plotting tools in utils. You will need to call matplotlib.pypolot.show() to display.
 ```
-utils.plot_image(image)
+image.plot()
 ```
 
 Now we can do various operations on this geometric image
@@ -120,8 +122,13 @@ will be equivariant.
 gg = operators[1] # one operator, a flip over the y-axis
 ff_k0 = invariant_filters[1] # one filter, a non-trivial scalar filter
 print(
-    'Equivariant:',
-    image.times_group_element(gg).convolve_with(ff_k0) == image.convolve_with(ff_k0).times_group_element(gg),
+    "Equivariant:",
+    jnp.allclose(
+        image.times_group_element(gg).convolve_with(ff_k0).data,
+        image.convolve_with(ff_k0).times_group_element(gg).data,
+        rtol=1e-2,
+        atol=1e-2,
+    ),
 )
 ```
 

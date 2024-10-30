@@ -3,4 +3,5 @@ numpy
 jax
 cmastro
 optax
+equinox
 imageio

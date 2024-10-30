@@ -6,7 +6,9 @@ src/geometricconvolutions/__init__.py
 src/geometricconvolutions/data.py
 src/geometricconvolutions/geometric.py
 src/geometricconvolutions/ml.py
+src/geometricconvolutions/ml_eqx.py
 src/geometricconvolutions/models.py
+src/geometricconvolutions/models_eqx.py
 src/geometricconvolutions/utils.py
 src/geometricconvolutions.egg-info/PKG-INFO
 src/geometricconvolutions.egg-info/SOURCES.txt
