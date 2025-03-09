@@ -36,7 +36,19 @@ It also provides equivariant neural network layers such as convolutions, activat
 These layers ingest a special data structure, the `MultiImage`, that allows combining geometric images or any tensor order or parity into a single model. 
 Finally, the package provides full-fledged versions of popular models such as the UNet or ResNet to allow researchers to quickly train and test on their own data sets with standard tools in the JAX ecosystem.
 
+The key features and targeted use cases are summarized in the following list:
+
+# Key features
+
+Comment: Make the bullet points into actual sentences.
+
+1. Geometric filters implemented in `jax` and `equinox`
+2. A special data structure `MultiImage`
+3. Interactive inspection of geometric filters and `MultiImage`
+4. Standalone networks
+
 # Statement of need
+
 
 The geometric convolutions introduced in [@gregory2024ginet] are defined on geometric images–an image where every pixel is a tensor.
 If $A$ is a geometric image of tensor order $k$ and $C$ is a geometric image of tensor order $k'$, then value of $A$ convolved with $C$ at pixel $\bar\imath$ is given by:
@@ -61,8 +73,20 @@ Another alternative method is are those based on Clifford Algebras, in particula
 This method has been implemented in the [Clifford Layers](https://github.com/microsoft/cliffordlayers) package.
 Like escnn, this method is also built with pytorch rather than JAX. Additionally, Clifford based methods can process vectors and pseudovectors, but cannot handle higher order tensors.
 
-Implementing our library in JAX allows us to easily build and optimize machine learning models with Equinox and Optax [@deepmind2020jax].
-For equivariance researchers, we provide all the common operations on geometric images such as addition, scaling, convolution, contraction, transposition, norms plus visualization methods.
+
+\[package name\] targets two main use cases:
+
+## As a drop-in replacement for CNN
+
+Comment: Expand on how you expext the users to use it as a drop in replacement. Also I feel like some of the other papers can be mentioned here instead.
+
 For practitioners, we provide both equivariant layers for building models, and full fledged model implementations such as the UNet, ResNet, and Dilated ResNet.
+
+## For designing and understanding geometric images
+
+Comment: Expand on this.
+
+
+For equivariance researchers, we provide all the common operations on geometric images such as addition, scaling, convolution, contraction, transposition, norms plus visualization methods.
 
 # References
